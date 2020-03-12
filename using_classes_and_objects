@@ -3,19 +3,23 @@ class Banker{
 Scanner val=new Scanner(System.in);
 private int amt=5000;
 static int a=0;
+void add(){
+System.out.println("Enter the amount to deposit");
+int add;
+add=val.nextInt();
+amt+=add;
+a++;
+}
 void with()
 {
 System.out.println("Enter the amount to withdraw");
 int with;
 with=val.nextInt();
 amt-=with;
-a++;
+if(amt<=0){
+    System.out.println("Insufficient Balance!\nTransacton not possible");
+    amt+=with;
 }
-void add(){
-System.out.println("Enter the amount to deposit");
-int add;
-add=val.nextInt();
-amt+=add;
 a++;
 }
 void fin()
