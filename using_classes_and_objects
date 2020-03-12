@@ -1,0 +1,48 @@
+import java.util.Scanner;
+class Banker{
+Scanner val=new Scanner(System.in);
+private int amt=5000;
+static int a=0;
+void with()
+{
+System.out.println("Enter the amount to withdraw");
+int with;
+with=val.nextInt();
+amt-=with;
+a++;
+}
+void add(){
+System.out.println("Enter the amount to deposit");
+int add;
+add=val.nextInt();
+amt+=add;
+a++;
+}
+void fin()
+{
+System.out.printf("Your final balance after %d transactions is %d",a,amt);
+}
+}
+class Main{
+public static void main(String args[])
+{
+Scanner s=new Scanner(System.in);
+Banker b=new Banker();//creating object to banker class
+System.out.println("Welcome to MY BANK portal.\nPlease select any one of the choices to help us serve you better\nFor basic understanding we have kept default amount to 5000INR\n");
+int option=1;
+while(option!=3)
+{
+System.out.println("1.Add money\n2.Wthdraw money\n3.Show my account balance\nPlease chose your option?");
+option=s.nextInt();
+switch(option)
+{
+case 1:b.add();
+break;
+case 2:b.with();
+break;
+case 3:b.fin();
+break;
+}
+}
+}
+}
