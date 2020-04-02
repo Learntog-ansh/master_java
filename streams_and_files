@@ -1,0 +1,50 @@
+import java.util.Scanner;
+import java.io.*;
+class Input
+{
+private String fn;
+Input(String s)
+{
+this.fn=s;
+}
+void add() throws IOException
+{
+DataInputStream dis=new DataInputStream(System.in);
+FileOutputStream f=new FileOutputStream(fn,true);
+BufferedOutputStream b=new BufferedOutputStream(f,1024);
+char ch;
+System.out.println("Enter / to exit the input");
+while((ch=(char)dis.read())!='/')
+b.write(ch);
+b.close();
+}
+int display() throws IOException
+{
+FileInputStream f=null;
+int ch;
+try{
+f=new FileInputStream(fn);
+}
+catch(FileNotFoundException filenf)
+{
+return 0;
+}
+while((ch=f.read())!=-1)
+System.out.print((char)ch);
+f.close();
+return 1;
+}
+}
+class makelist
+{
+public static void main(String args[]) throws IOException
+{
+Scanner s=new Scanner(System.in);
+System.out.println("Enter the name of file you want to create with the .format");
+String fn=new String();
+fn=s.next();
+Input i=new Input(fn);
+i.add();
+i.display();
+}
+}
